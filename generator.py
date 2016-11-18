@@ -64,10 +64,12 @@ class Generator:
                 ## Do nothing
                 pass
 
-            elif line_no > 0:
+            elif line_no > 1:
                 d_percent = parts[4].split("-")
+				# Single percent value.
                 if len(d_percent) == 1:
                     self.encounters[int(d_percent[0])] = parts
+				# Percent range.
                 else:
                     n1 = int(d_percent[0])
                     n2 = int(d_percent[1])
@@ -84,6 +86,7 @@ class Generator:
         roll = d("%")
         print "Roll to determine if encounter is found yielded: ",roll
 
+		
         if roll >= self.encounter_chance:
             print "Nothing happens.", str(roll)+">"+ str(self.encounter_chance)
             return
@@ -100,6 +103,8 @@ class Generator:
             else:
                 print encounter
                 print "You encounter:"
+
+				## Determine the number of a certain creature.
                 number=dparse(encounter[2])
                 CR = encounter[0]
                 name=encounter[1]
