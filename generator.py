@@ -85,7 +85,7 @@ class Generator:
         print "Roll to determine if encounter is found yielded: ",roll
 
         if roll >= self.encounter_chance:
-            print "Nothing happens.", str(roll)+"<"+ str(self.encounter_chance)
+            print "Nothing happens.", str(roll)+">"+ str(self.encounter_chance)
             return
         else:
             # if there is an encounter, decide what it is

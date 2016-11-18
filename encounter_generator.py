@@ -10,6 +10,10 @@ else:
 gen = generator.Generator()
 gen.load(choice)
 
-gen.get_encounter_message()
+get_another=True
+
+while get_another:
+	gen.get_encounter_message()
+	get_another = 'y' in raw_input("Get another encounter from this table? (y/n)")
 
 raw_input("Press any key to exit.")
