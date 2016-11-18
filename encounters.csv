@@ -1,4 +1,4 @@
-Encounter Chance,10,,,,
+Encounter Chance,10-12,,,,
 CR (Single),Monster,Number,Habitat,d%,Notes
 2,Bogglith,1d3,Swamp,0-20,This is an example creature.
 1,Croggling,d2,Swamp,21-23,

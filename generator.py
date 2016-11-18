@@ -48,6 +48,8 @@ class Generator:
             self.encounters[x] = None
 
         self.encounter_chance = 20
+        self.encounter_chance_min = 10
+        self.encounter_chance_max = 12
 
     # load the encounter table
     def load(self, filename):
@@ -57,8 +59,14 @@ class Generator:
         for line in f:
             parts = line.split(",")
             if line_no == 0:
-                self.encounter_chance = int(parts[1])
-                print "Encounter chance:", self.encounter_chance
+                chances = parts[1].split('-')
+                if len(chances) == 1:
+                    self.encounter_chance = int(parts[1])
+                    self.encounter_chance_min = self.encounter_chance
+                    self.encounter_chance_max = self.encounter_chance
+                else:
+                    self.encounter_chance_min = int(chances[0])
+                    self.encounter_chance_max = int(chances[1])
 
             elif line_no == 1:
                 ## Do nothing
@@ -83,10 +91,13 @@ class Generator:
     def get_encounter_message(self):
         # roll to see if there is an encounter
 
+        self.encounter_chance = random.randint(self.encounter_chance_min,self.encounter_chance_max)
+        print "Chance for this hour: ",self.encounter_chance
+
         roll = d("%")
         print "Roll to determine if encounter is found yielded: ",roll
 
-		
+
         if roll >= self.encounter_chance:
             print "Nothing happens.", str(roll)+">"+ str(self.encounter_chance)
             return
