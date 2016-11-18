@@ -1,0 +1,3 @@
+Encounter Chance,100,,,,
+CR (Single),Monster,Number,Habitat,d%,Notes
+1,Name,1d2,Example,0-100,These are some notes. For now don’t use commas; this is a comma-separated list.
